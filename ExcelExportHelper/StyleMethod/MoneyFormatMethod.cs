@@ -8,11 +8,6 @@ namespace ExcelExportHelper
     /// </summary>
     internal class MoneyFormatMethod : CellStyleMethod
     {
-        internal MoneyFormatMethod()
-        {
-            CellType = CellType.Numeric;
-        }
-
         internal override ICellStyle SetCell(ICellStyle cellStyle)
         {
             IDataFormat format = workbook.CreateDataFormat();

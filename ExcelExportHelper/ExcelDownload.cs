@@ -49,7 +49,7 @@ namespace ExcelExportHelper
         /// <param name="excelSetMethod">操作Excel方法</param>
         public void ExportExcel(Action<IWorkbook, ISheet> excelSetMethod)
         {
-            GenerateExcel(excelSetMethod);
+            excelSetMethod.Invoke(hssfWork, hssfSheet);
             DownLoadExcel();
         }
 
@@ -64,8 +64,8 @@ namespace ExcelExportHelper
             {
                 return;
             }
-            Dictionary<PropertyInfo, ExcelInfoAttribute> _excelInfos = GetPropInfo<T>();
             CellStyleMethod.workbook = hssfWork;
+            Dictionary<PropertyInfo, ExcelInfoAttribute> _excelInfos = GetPropInfo<T>();
             SetExcelTitle(_excelInfos);
             SetExcelContent(list, _excelInfos);
         }
@@ -100,6 +100,7 @@ namespace ExcelExportHelper
                 _rowNum++;
             }
         }
+
         /// <summary>
         /// 设置单元格内容
         /// </summary>
@@ -161,15 +162,6 @@ namespace ExcelExportHelper
                 hssfSheet.SetColumnWidth(_cellIndex, item.Value.Width);
                 _cellIndex++;
             }
-        }
-
-        /// <summary>
-        /// 生成Excel
-        /// </summary>
-        /// <param name="excelSetMethod">Excel操作方法</param>
-        private void GenerateExcel(Action<IWorkbook, ISheet> excelSetMethod)
-        {
-            excelSetMethod.Invoke(hssfWork, hssfSheet);
         }
 
         /// <summary>

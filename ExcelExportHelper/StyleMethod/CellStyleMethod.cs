@@ -8,7 +8,6 @@ namespace ExcelExportHelper
     internal abstract class CellStyleMethod
     {
         internal static IWorkbook workbook { get; set; }
-        internal CellType CellType { get; set; }
         internal abstract ICellStyle SetCell(ICellStyle cellStyle);
     }
 }

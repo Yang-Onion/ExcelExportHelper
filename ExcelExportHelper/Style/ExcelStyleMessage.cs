@@ -20,21 +20,9 @@ namespace ExcelExportHelper
         }
 
         /// <summary>
-        /// Excel样式键值对
+        /// 获取枚举对应CellStyle
         /// </summary>
-        /// <returns></returns>
-        private static Dictionary<string, ICellStyle> GetExcelStyle<T>(T workbook) where T : IWorkbook
-        {
-            Dictionary<string, ICellStyle> resultDic = new Dictionary<string, ICellStyle>();
-            GetCellStyle(workbook, ExcelStyle.left | ExcelStyle.date);
-            GetCellStyle(workbook, ExcelStyle.right);
-            return resultDic;
-        }
-
-        /// <summary>
-        /// 获取枚举对应样式
-        /// </summary>
-        /// <param name="excelStyle"></param>
+        /// <param name="excelStyle">Excel样式枚举</param>
         /// <returns></returns>
         internal static ICellStyle GetCellStyle<T>(T workbook, ExcelStyle excelStyle) where T : IWorkbook
         {
