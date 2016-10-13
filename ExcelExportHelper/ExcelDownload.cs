@@ -12,7 +12,6 @@ namespace ExcelExportHelper
 {
     /// <summary>
     /// 使用Npoi导出Excel公共类
-    /// 需要Web.Config设置ExcelDownLoadPath
     /// </summary>
     public class ExcelDownload
     {
